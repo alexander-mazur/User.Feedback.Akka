@@ -12,19 +12,19 @@ namespace User.Feedback.Central.Actors
         {
             _persistenceActor = persistenceActor;
 
-            Receive<Messages.TellUserFeedback>(tellUserFeedback => ProcessUserFeedback(tellUserFeedback));
+            Receive<TellUserFeedbackMessage>(tellUserFeedback => ProcessTellUserFeedbackMessage(tellUserFeedback));
 
-            Receive<Messages.UserFeedbackCollectionRequest>(request => ProcessUserFeedbackCollectionRequest(request));
+            Receive<RequestUserFeedbacksMessage>(request => ProcessRequestUserFeedbacksMessage(request));
         }
 
-        private void ProcessUserFeedback(Messages.TellUserFeedback tellUserFeedback)
+        private void ProcessTellUserFeedbackMessage(TellUserFeedbackMessage tellUserFeedbackMessage)
         {
-            _persistenceActor.Tell(tellUserFeedback);
+            _persistenceActor.Tell(tellUserFeedbackMessage);
         }
 
-        private void ProcessUserFeedbackCollectionRequest(Messages.UserFeedbackCollectionRequest request)
+        private void ProcessRequestUserFeedbacksMessage(RequestUserFeedbacksMessage message)
         {
-            _persistenceActor.Forward(request);
+            _persistenceActor.Forward(message);
         }
     }
 }

@@ -7,6 +7,6 @@ namespace User.Feedback.Client.BusinessObjects
     {
         void TellUserFeedback(UserFeedback userFeedback);
 
-        Task<Messages.UserFeedbackCollectionResponse> AskUserFeedbackCollection();
+        Task<ReplyUserFeedbacksMessage> AskUserFeedbackCollection();
     }
 }

@@ -15,12 +15,12 @@ namespace User.Feedback.Client.BusinessObjects
 
         public void TellUserFeedback(UserFeedback userFeedback)
         {
-            _userFeedbackRemoteReceiver.Tell(new Messages.TellUserFeedback(userFeedback));
+            _userFeedbackRemoteReceiver.Tell(new TellUserFeedbackMessage(userFeedback));
         }
 
-        public Task<Messages.UserFeedbackCollectionResponse> AskUserFeedbackCollection()
+        public Task<ReplyUserFeedbacksMessage> AskUserFeedbackCollection()
         {
-            return _userFeedbackRemoteReceiver.Ask<Messages.UserFeedbackCollectionResponse>(new Messages.UserFeedbackCollectionRequest());
+            return _userFeedbackRemoteReceiver.Ask<ReplyUserFeedbacksMessage>(new RequestUserFeedbacksMessage());
         }
     }
 }

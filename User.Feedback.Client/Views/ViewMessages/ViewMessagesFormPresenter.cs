@@ -18,7 +18,7 @@ namespace User.Feedback.Client.Views.ViewMessages
         {
             UserFeedbackClientActorSystem.Instance.UserFeedbackManager.AskUserFeedbackCollection().ContinueWith(task =>
             {
-                View.UserFeedbacks = task.Result.UserFeedbackCollection;
+                View.UserFeedbacks = task.Result.UserFeedbacks;
             });
         }
     }

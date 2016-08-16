@@ -10,13 +10,13 @@ namespace User.Feedback.Central.Actors
 
         public UserFeedbackPersistenceActor()
         {
-            Receive<Messages.TellUserFeedback>(tellUserFeedback => _userFeedbacks.Add(tellUserFeedback.UserFeedback));
+            Receive<TellUserFeedbackMessage>(tellUserFeedback => _userFeedbacks.Add(tellUserFeedback.UserFeedback));
 
-            Receive<Messages.UserFeedbackCollectionRequest>(request =>
-                                                            {
-                                                                var result = new Messages.UserFeedbackCollectionResponse(_userFeedbacks);
-                                                                Sender.Tell(result, Self);
-                                                            });
+            Receive<RequestUserFeedbacksMessage>(request =>
+            {
+                var result = new ReplyUserFeedbacksMessage(_userFeedbacks);
+                Sender.Tell(result, Self);
+            });
         }
     }
 }

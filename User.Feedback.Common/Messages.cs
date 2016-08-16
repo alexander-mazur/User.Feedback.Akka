@@ -2,28 +2,25 @@
 
 namespace User.Feedback.Common
 {
-    public class Messages
+    public class TellUserFeedbackMessage
     {
-        public class UserFeedbackCollectionRequest { }
+        public UserFeedback UserFeedback { get; private set; }
 
-        public class TellUserFeedback
+        public TellUserFeedbackMessage(UserFeedback userFeedback)
         {
-            public UserFeedback UserFeedback { get; private set; }
-
-            public TellUserFeedback(UserFeedback userFeedback)
-            {
-                UserFeedback = userFeedback;
-            }
+            UserFeedback = userFeedback;
         }
+    }
 
-        public class UserFeedbackCollectionResponse
+    public class RequestUserFeedbacksMessage { }
+
+    public class ReplyUserFeedbacksMessage
+    {
+        public IList<UserFeedback> UserFeedbacks { get; private set; }
+
+        public ReplyUserFeedbacksMessage(IList<UserFeedback> userFeedbacks)
         {
-            public IList<UserFeedback> UserFeedbackCollection { get; private set; }
-
-            public UserFeedbackCollectionResponse(IList<UserFeedback> userFeedbackCollection)
-            {
-                UserFeedbackCollection = userFeedbackCollection;
-            }
+            UserFeedbacks = userFeedbacks;
         }
     }
 }
