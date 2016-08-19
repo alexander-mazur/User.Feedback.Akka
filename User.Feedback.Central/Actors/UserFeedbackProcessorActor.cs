@@ -1,6 +1,5 @@
-﻿using System.Threading.Tasks;
-using Akka.Actor;
-using User.Feedback.Common;
+﻿using Akka.Actor;
+using User.Feedback.Common.Messages;
 
 namespace User.Feedback.Central.Actors
 {

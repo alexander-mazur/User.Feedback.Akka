@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Akka.Actor;
 using User.Feedback.Common;
+using User.Feedback.Common.Messages;
 
 namespace User.Feedback.Central.Actors
 {
