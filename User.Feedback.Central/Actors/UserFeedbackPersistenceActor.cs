@@ -10,7 +10,12 @@ namespace User.Feedback.Central.Actors
 
         public UserFeedbackPersistenceActor()
         {
-            Receive<TellUserFeedbackMessage>(tellUserFeedback => _userFeedbacks.Add(tellUserFeedback.UserFeedback));
+            Receive<TellUserFeedbackMessage>(tellUserFeedback =>
+            {
+                _userFeedbacks.Add(tellUserFeedback.UserFeedback);
+                Sender.Tell(new UserFeedbackUpdateMessage(
+                    new UserFeedback(tellUserFeedback.UserFeedback.Message + "*", tellUserFeedback.UserFeedback.Created)));
+            });
 
             Receive<RequestUserFeedbacksMessage>(request =>
             {

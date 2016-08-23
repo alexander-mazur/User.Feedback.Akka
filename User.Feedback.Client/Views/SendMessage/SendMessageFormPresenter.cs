@@ -1,7 +1,7 @@
 using System;
 using System.Windows.Forms;
 
-using User.Feedback.Client.Actors;
+using User.Feedback.Client.BusinessObjects;
 using User.Feedback.Client.Properties;
 using User.Feedback.Common;
 
@@ -11,9 +11,12 @@ namespace User.Feedback.Client.Views.SendMessage
     {
         public ISendMessageForm View { get; }
 
-        public SendMessageFormPresenter(ISendMessageForm view)
+        private IUserFeedbackManager UserFeedbackManager { get; }
+
+        public SendMessageFormPresenter(ISendMessageForm view, IUserFeedbackManager userFeedbackManager)
         {
             View = view;
+            UserFeedbackManager = userFeedbackManager;
 
             View.MessageSent += OnMessageSent;
         }
@@ -26,7 +29,7 @@ namespace User.Feedback.Client.Views.SendMessage
                 return;
             }
 
-            UserFeedbackClientActorSystem.Instance.UserFeedbackManager.TellUserFeedback(new UserFeedback(View.Message, DateTime.Now));
+            UserFeedbackManager.TellUserFeedback(new UserFeedback(View.Message, DateTime.Now));
 
             View.Message = string.Empty;
         }

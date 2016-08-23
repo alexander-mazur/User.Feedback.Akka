@@ -1,5 +1,7 @@
 using System;
-using User.Feedback.Client.Actors;
+
+using User.Feedback.Common;
+using User.Feedback.Client.BusinessObjects;
 
 namespace User.Feedback.Client.Views.ViewMessages
 {
@@ -7,19 +9,30 @@ namespace User.Feedback.Client.Views.ViewMessages
     {
         public IViewMessagesForm View { get; }
 
-        public ViewMessagesFormPresenter(IViewMessagesForm view)
+        private IUserFeedbackManager UserFeedbackManager { get; }
+
+        public ViewMessagesFormPresenter(IViewMessagesForm view, IUserFeedbackManager userFeedbackManager)
         {
             View = view;
+            UserFeedbackManager = userFeedbackManager;
 
             View.MessagesRequested += OnMessagesRequested;
+
+            UserFeedbackManager.UserFeedbackUpdated += OnUserFeedbackUpdated;
+            UserFeedbackManager.SubscribeToUserFeedbackUpdates();
         }
 
         private void OnMessagesRequested(object sender, EventArgs e)
         {
-            UserFeedbackClientActorSystem.Instance.UserFeedbackManager.AskUserFeedbackCollection().ContinueWith(task =>
+            UserFeedbackManager.AskUserFeedbackCollection().ContinueWith(task =>
             {
-                View.UserFeedbacks = task.Result.UserFeedbacks;
+                View.AppendUserFeedbacks(task.Result.UserFeedbacks);
             });
+        }
+
+        private void OnUserFeedbackUpdated(object sender, UserFeedback userFeedback)
+        {
+            View.AppendUserFeedback(userFeedback);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using User.Feedback.Client.Actors;
 
 namespace User.Feedback.Client.Views.SendMessage
 {
@@ -14,7 +15,7 @@ namespace User.Feedback.Client.Views.SendMessage
 
         protected override void OnLoad(EventArgs e)
         {
-            Presenter = new SendMessageFormPresenter(this);
+            Presenter = new SendMessageFormPresenter(this, ClientActorSystem.Instance.UserFeedbackManager);
         }
 
         public string Message

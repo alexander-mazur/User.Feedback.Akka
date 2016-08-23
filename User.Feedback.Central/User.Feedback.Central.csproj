@@ -72,7 +72,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Actors\UserFeedbackPersistenceActor.cs" />
-    <Compile Include="Actors\UserFeedbackCentralActorSystem.cs" />
+    <Compile Include="Actors\CentralActorSystem.cs" />
     <Compile Include="Actors\UserFeedbackProcessorActor.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

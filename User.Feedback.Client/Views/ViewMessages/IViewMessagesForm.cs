@@ -9,6 +9,8 @@ namespace User.Feedback.Client.Views.ViewMessages
     {
         event EventHandler MessagesRequested;
 
-        IList<UserFeedback> UserFeedbacks { get; set; }
+        void AppendUserFeedbacks(IList<UserFeedback> userFeedbacks);
+
+        void AppendUserFeedback(UserFeedback userFeedback);
     }
 }

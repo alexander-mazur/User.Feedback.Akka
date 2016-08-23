@@ -8,7 +8,7 @@ namespace User.Feedback.Central
     {
         static void Main(string[] args)
         {
-            using (var userFeedbackCentralActorSystem = new UserFeedbackCentralActorSystem())
+            using (var userFeedbackCentralActorSystem = new CentralActorSystem())
             {
                 Console.WriteLine("User.Feedback Central Application started.");
                 Console.WriteLine("Press ENTER to exit...");

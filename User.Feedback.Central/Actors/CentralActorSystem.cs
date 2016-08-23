@@ -4,9 +4,9 @@ using Akka.Actor;
 
 namespace User.Feedback.Central.Actors
 {
-    public class UserFeedbackCentralActorSystem : IDisposable
+    public class CentralActorSystem : IDisposable
     {
-        public UserFeedbackCentralActorSystem()
+        public CentralActorSystem()
         {
             Initialize();
         }

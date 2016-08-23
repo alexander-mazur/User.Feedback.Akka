@@ -75,10 +75,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Actors\IUserFeedbackClientActorSystem.cs" />
-    <Compile Include="BusinessObjects\IUserFeedbackBusinessLogicManager.cs" />
-    <Compile Include="BusinessObjects\UserFeedbackBusinessLogicManager.cs" />
-    <Compile Include="Actors\UserFeedbackClientActorSystem.cs" />
+    <Compile Include="Actors\IClientActorSystem.cs" />
+    <Compile Include="Actors\UserFeedbackUpdateActor.cs" />
+    <Compile Include="BusinessObjects\IUserFeedbackManager.cs" />
+    <Compile Include="BusinessObjects\UserFeedbackManager.cs" />
+    <Compile Include="Actors\ClientActorSystem.cs" />
     <Compile Include="Views\Main\IMainForm.cs" />
     <Compile Include="Views\Main\MainForm.cs">
       <SubType>Form</SubType>

@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
 using System.Windows.Forms;
-
+using User.Feedback.Client.Actors;
 using User.Feedback.Client.BusinessObjects;
 using User.Feedback.Common;
 
@@ -11,30 +13,42 @@ namespace User.Feedback.Client.Views.ViewMessages
     {
         public ViewMessagesFormPresenter Presenter { get; set; }
 
-        public IList<UserFeedback> UserFeedbacks
+        private BindingList<UserFeedback> _userFeedbacks = new BindingList<UserFeedback>();
+
+        public void AppendUserFeedbacks(IList<UserFeedback> userFeedbacks)
         {
-            get { return userFeedbackBindingSource.DataSource as IList<UserFeedback>; }
-            set
+            if (InvokeRequired)
             {
-                if (InvokeRequired)
-                {
-                    BeginInvoke(new Action(() => UserFeedbacks = value));
-                }
-                else
-                {
-                    userFeedbackBindingSource.DataSource = value;
-                }
+                BeginInvoke(new Action<IList<UserFeedback>>(obj => AppendUserFeedbacks(userFeedbacks)), userFeedbacks);
+            }
+            else
+            {
+                userFeedbackBindingSource.DataSource = _userFeedbacks = new BindingList<UserFeedback>(userFeedbacks);
+            }
+        }
+
+        public void AppendUserFeedback(UserFeedback userFeedback)
+        {
+            if (InvokeRequired)
+            {
+                BeginInvoke(new Action<UserFeedback>(obj => AppendUserFeedback(userFeedback)), userFeedback);
+            }
+            else
+            {
+                _userFeedbacks.Add(userFeedback);
             }
         }
 
         public ViewMessagesForm()
         {
             InitializeComponent();
+
+            userFeedbackBindingSource.DataSource = _userFeedbacks;
         }
 
         protected override void OnLoad(EventArgs e)
         {
-            Presenter = new ViewMessagesFormPresenter(this);
+            Presenter = new ViewMessagesFormPresenter(this, ClientActorSystem.Instance.UserFeedbackManager);
         }
 
         public event EventHandler MessagesRequested
