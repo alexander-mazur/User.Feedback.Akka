@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.Windows.Forms;
+
 using User.Feedback.Client.Actors;
-using User.Feedback.Client.BusinessObjects;
 using User.Feedback.Common;
 
 namespace User.Feedback.Client.Views.ViewMessages
@@ -57,13 +56,5 @@ namespace User.Feedback.Client.Views.ViewMessages
             remove { getMessagesButton.Click += value; }
         }
 
-        protected override void OnFormClosing(FormClosingEventArgs e)
-        {
-            if (e.CloseReason == CloseReason.UserClosing)
-            {
-                e.Cancel = true;
-                Hide();
-            }
-        }
     }
 }

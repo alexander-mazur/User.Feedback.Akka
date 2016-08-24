@@ -7,14 +7,7 @@ namespace User.Feedback.Client.Views.Main
 {
     public class MainFormPresenter 
     {
-        private ViewMessagesForm _viewMessagesForm;
-        private SendMessageForm _sendMessageForm;
-
         public IMainForm View { get; }
-
-        public ViewMessagesForm ViewMessagesForm => _viewMessagesForm ?? (_viewMessagesForm = new ViewMessagesForm());
-
-        public SendMessageForm SendMessageForm => _sendMessageForm ?? (_sendMessageForm = new SendMessageForm());
 
         public MainFormPresenter(IMainForm view)
         {
@@ -26,12 +19,14 @@ namespace User.Feedback.Client.Views.Main
 
         private void OnShowViewMessagesForm(object sender, EventArgs e)
         {
-            ViewMessagesForm.Show();
+            var viewMessagesForm = new ViewMessagesForm();
+            viewMessagesForm.Show();
         }
 
         private void OnShowSendMessageForm(object sender, EventArgs e)
         {
-            SendMessageForm.Show();
+            var sendMessageForm = new SendMessageForm();
+            sendMessageForm.Show();
         }
     }
 }

@@ -9,6 +9,8 @@ namespace User.Feedback.Client.BusinessObjects
     {
         void TellUserFeedback(UserFeedback userFeedback);
 
+        void TellBatchOfUserFeedbacks(UserFeedback userFeedback, int count);
+
         Task<ReplyUserFeedbacksMessage> AskUserFeedbackCollection();
 
         void SubscribeToUserFeedbackUpdates();

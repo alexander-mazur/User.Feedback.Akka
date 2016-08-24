@@ -29,7 +29,14 @@ namespace User.Feedback.Client.Views.SendMessage
                 return;
             }
 
-            UserFeedbackManager.TellUserFeedback(new UserFeedback(View.Message, DateTime.Now));
+            if (View.MessagesCount == 1)
+            {
+                UserFeedbackManager.TellUserFeedback(new UserFeedback(View.Message, DateTime.Now));
+            }
+            else
+            {
+                UserFeedbackManager.TellBatchOfUserFeedbacks(new UserFeedback(View.Message, DateTime.Now), View.MessagesCount);
+            }
 
             View.Message = string.Empty;
         }

@@ -24,6 +24,8 @@ namespace User.Feedback.Client.Views.SendMessage
             set { messageTextBox.Text = value; }
         }
 
+        public int MessagesCount => Convert.ToInt32(messagesCountNumericUpDown.Value);
+
         public event EventHandler MessageSent
         {
             add { sendMessageButton.Click += value; }

@@ -7,6 +7,8 @@ namespace User.Feedback.Client.Views.SendMessage
     {
         string Message { get; set; }
 
+        int MessagesCount { get; }
+
         event EventHandler MessageSent;
 
         void Close();
