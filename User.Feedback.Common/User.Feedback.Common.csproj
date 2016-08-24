@@ -52,7 +52,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Messages.cs" />
+    <Compile Include="Messages\ReplyUserFeedbacksMessage.cs" />
+    <Compile Include="Messages\RequestUserFeedbacksMessage.cs" />
+    <Compile Include="Messages\TellUserFeedbackMessage.cs" />
     <Compile Include="UserFeedback.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
