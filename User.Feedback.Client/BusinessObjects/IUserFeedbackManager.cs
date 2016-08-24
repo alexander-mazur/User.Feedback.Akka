@@ -1,6 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using User.Feedback.Common;
+using User.Feedback.Common.Messages;
 
 namespace User.Feedback.Client.BusinessObjects
 {

@@ -52,6 +52,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Messages\UserFeedbackUpdateMessage.cs" />
+    <Compile Include="Messages\UnsubscribeFromUserFeedbackUpdateMessage.cs" />
+    <Compile Include="Messages\SubscribeToUserFeedbackUpdateMessage.cs" />
     <Compile Include="Messages\ReplyUserFeedbacksMessage.cs" />
     <Compile Include="Messages\RequestUserFeedbacksMessage.cs" />
     <Compile Include="Messages\TellUserFeedbackMessage.cs" />

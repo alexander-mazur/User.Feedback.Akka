@@ -1,7 +1,7 @@
 ﻿using Akka.Actor;
 
 using User.Feedback.Client.BusinessObjects;
-using User.Feedback.Common;
+using User.Feedback.Common.Messages;
 
 namespace User.Feedback.Client.Actors
 {
